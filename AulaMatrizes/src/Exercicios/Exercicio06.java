@@ -24,21 +24,21 @@ public class Exercicio06 {
         }
 
         System.out.println("\nMatrizA:");
-        for (int linha[] : matrizA){
+        for (int[] linha : matrizA){
             for (int valor : linha){
                 System.out.printf("%2d ",valor);
             }
             System.out.println();
         }
         System.out.println("\nMatrizB:");
-        for (int linha[] : matrizB){
+        for (int[] linha : matrizB){
             for (int valor : linha){
                 System.out.printf("%2d ",valor);
             }
             System.out.println();
         }
         System.out.println("\nMatrizC:");
-        for (int linha[] : matrizC){
+        for (int[] linha : matrizC){
             for (int valor : linha){
                 System.out.printf("%2d ",valor);
             }
