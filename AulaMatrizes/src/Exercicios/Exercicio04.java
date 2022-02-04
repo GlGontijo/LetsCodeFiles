@@ -8,8 +8,8 @@ public class Exercicio04 {
     public static void main(String[] args) {
         int[][] matriz = new int[4][4];
         Random rnd = new Random();
-        int colunaMaior = 0;
         int linhaMaior = 0;
+        int colunaMaior = 0;
 
         System.out.println("Matriz:");
         for (int i=0; i < matriz.length; i++){
