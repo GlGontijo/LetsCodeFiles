@@ -14,13 +14,14 @@ public class Exercicio14 {
         System.out.println(" B | I  | N  | G  | O  |");
         for (int i=0; i < cartela.length; i++) {
             for (int j = 0; j < cartela[i].length; j++) {
-                // valores padrão por coluna do Bingo
+                // valores especificos por coluna do Bingo
                 switch (j){
-                    case 0: min = 1; max = 15; break;
-                    case 1: min = 16; max = 30; break;
-                    case 2: min = 31; max = 45; break;
-                    case 3: min = 46; max = 60; break;
-                    default: min = 61; max = 75;
+                    case 0: min =  1; max = 20; break;
+                    case 1: min = 21; max = 40; break;
+                    case 2: min = 41; max = 60; break;
+                    case 3: min = 61; max = 80; break;
+                    case 4: min = 81; max = 99; break;
+                    default: min = 0; max = 0;
                 }
                 int n = rndFaixa(min,max);
                 // sem valores repetidos

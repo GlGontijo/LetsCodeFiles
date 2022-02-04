@@ -18,7 +18,7 @@ public class Exercicio15 {
             System.out.printf("\nAluno %d :",i+1);
             resultado[i] = 0;
             for (int j=0; j < respAlunos[i].length; j++){
-                int resp = rnd.nextInt(5) + 61; // cod ascii
+                int resp = rnd.nextInt(4) + 61; // cod ascii
                 switch (resp){
                     case 61 : respAlunos[i][j] = 'a'; break;
                     case 62 : respAlunos[i][j] = 'b'; break;
