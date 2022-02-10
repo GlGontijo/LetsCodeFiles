@@ -22,7 +22,9 @@ public class Exercicio16 {
             System.out.printf("\nAluno matricula: %5d :",matricula[i]);
             resultado[i] = 0;
             for (int j=0; j < respAlunos[i].length; j++){
-                int resp = rnd.nextInt(5) + 61; // cod ascii
+                int resp = rnd.nextInt(5) + 97; // cod ascii
+                respAlunos[i][j] = (char)resp;
+                /*
                 switch (resp){
                     case 61 : respAlunos[i][j] = 'a'; break;
                     case 62 : respAlunos[i][j] = 'b'; break;
@@ -31,6 +33,8 @@ public class Exercicio16 {
                     case 65 : respAlunos[i][j] = 'e'; break;
                     default : respAlunos[i][j] = ' ';
                 }
+                */
+
                 if (respAlunos[i][j] == gabarito[j]){
                     resultado[i]++;
                 }
