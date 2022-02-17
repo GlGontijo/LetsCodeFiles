@@ -6,47 +6,7 @@ public class Exercicios {
     public static Scanner scanner = new Scanner(System.in);
 
     // Exercicio 01
-    public static class Exercicio01{
-
-        public static class Funcionario {
-            String nome;
-            String sobrenome;
-            String cidade;
-            String estado;
-            int horasTrabalhadas;
-            double vlrHora;
-
-            Funcionario(){}
-
-            Funcionario(String nome, String sobrenome, String cidade, String estado, int horasTrabalhadas, double vlrHora){
-                this.nome = nome;
-                this.sobrenome = sobrenome;
-                this.cidade = cidade;
-                this.estado = estado;
-                this.horasTrabalhadas = horasTrabalhadas;
-                this.vlrHora = vlrHora;
-            }
-
-            public void printNomeSobrenome() {
-                System.out.println("Funcionario: "+this.nome+" "+this.sobrenome);
-            }
-
-            public void incrementaHora(int horasTrabalhadas){
-                System.out.println("Horas trabalhadas antes: "+this.horasTrabalhadas);
-                System.out.println("Horas adicionadas "+horasTrabalhadas);
-                this.horasTrabalhadas += horasTrabalhadas;
-                System.out.println("Saldo final de Horas: "+this.horasTrabalhadas);
-            }
-
-            public void calcSalario(){
-                printNomeSobrenome();
-                double salario = this.horasTrabalhadas * this.vlrHora;
-                System.out.println("Horas trabalhadas: "+this.horasTrabalhadas);
-                System.out.println("Valor hora: R$"+this.vlrHora);
-                System.out.println("Salario final: R$"+salario);
-            }
-        }
-
+    public static class Exercicio01 {
         public static void main(String[] args) {
 
             // Obtendo os dados
@@ -92,9 +52,9 @@ public class Exercicios {
                         System.out.println();
                         System.out.println("Informe o novo valor por hora");
                         funcionario.printNomeSobrenome();
-                        funcionario.vlrHora = scanner.nextDouble();
+                        funcionario.setVlrHora(scanner.nextDouble());
                         scanner.nextLine();
-                        System.out.println("Novo valor por hora: R$" + funcionario.vlrHora);
+                        System.out.println("Novo valor por hora: R$" + funcionario.getVlrHora());
                         break;
                     case 3:
                         System.out.println();
@@ -113,30 +73,7 @@ public class Exercicios {
 
 
     // Exercicio 02
-    public static class Exercicio02{
-
-        public static class Livro {
-            String pessoaLeitor;
-            String titulo;
-            int pagTotal;
-            int pagLida;
-
-            Livro(){}
-
-            Livro(String pessoaLeitor, String titulo, int pagTotal){
-                this.pessoaLeitor = pessoaLeitor;
-                this.titulo = titulo;
-                this.pagTotal = pagTotal;
-            }
-
-            public float getProgressoLivro(int pagLida){
-                this.pagLida = pagLida;
-                System.out.println("Paginas do livro: "+this.pagTotal);
-                System.out.println("Pagina atual: "+this.pagLida);
-                return ((float)this.pagLida / (float)this.pagTotal)*100;
-            }
-        }
-
+    public static class Exercicio02 {
         public static void main(String[] args) {
             Livro livro1 = new Livro();
             Livro livro2 = new Livro(
@@ -148,79 +85,45 @@ public class Exercicios {
             // livro1 recebe os valores do teclado
             System.out.println("\nInforme os dados do livro1:");
             System.out.println("Nome do leitor:");
-            livro1.pessoaLeitor = scanner.nextLine();
+            livro1.setPessoaLeitor(scanner.nextLine());
             System.out.println("Titulo do livro:");
-            livro1.titulo = scanner.nextLine();
+            livro1.setTitulo(scanner.nextLine());
             System.out.println("Total de paginas do livro:");
-            livro1.pagTotal = scanner.nextInt();
+            livro1.setPagTotal(scanner.nextInt());
             scanner.nextLine();
 
             System.out.println("\nQuantas paginas lidas?");
-            System.out.println("Livro1 "+livro1.titulo+": ");
+            System.out.println("Livro1 "+ livro1.getTitulo() +": ");
             float perc1 = livro1.getProgressoLivro(scanner.nextInt());
             scanner.nextLine();
             System.out.printf("%s ja leu %.2f%% do livro %s.\n",
-                    livro1.pessoaLeitor,
+                    livro1.getPessoaLeitor(),
                     perc1,
-                    livro1.titulo);
+                    livro1.getTitulo());
             System.out.println();
-            System.out.println("Livro2 "+livro2.titulo+": ");
+            System.out.println("Livro2 "+ livro2.getTitulo() +": ");
             float perc2 = livro2.getProgressoLivro(scanner.nextInt());
             scanner.nextLine();
             System.out.printf("%s ja leu %.2f%% do livro %s.\n",
-                    livro2.pessoaLeitor,
+                    livro2.getPessoaLeitor(),
                     perc2,
-                    livro2.titulo);
+                    livro2.getTitulo());
             System.out.println();
         }
     }
 
 
     // Exercicio 03
-    public static class Exercicio03{
-
-        public static class Veiculo {
-            String modelo;
-            String marca;
-            String cor;
-            int anoFab;
-            int velMax;
-            int velAtual;
-            float vlrFipe;
-
-            Veiculo(){}
-
-            void printInfo(){
-                System.out.println("\nVeiculo: "+this.modelo+
-                        "\nMarca: "+this.marca+
-                        "\nCor: "+this.cor);
-            }
-
-            void acelerar(int velAumenta){
-                if ((this.velAtual + velAumenta) <= this.velMax){
-                    this.velAtual += velAumenta;
-                    System.out.println("Estou acelerando "+this.velAtual+"km/h");
-                } else {
-                    System.out.println("Velocidade acima do valor permitido para o veiculo");
-                }
-            }
-
-            void frear(int velDiminui){
-                this.velAtual -= velDiminui;
-                System.out.println("Estou freando o veiculo "+this.modelo);
-                System.out.println("Velocidade atual: "+this.velAtual+"km/h");
-            }
-        }
-
+    public static class Exercicio03 {
         public static void main(String[] args) {
             Veiculo carro = new Veiculo();
 
-            carro.modelo = "HB20";
-            carro.marca = "Hyundai";
-            carro.cor = "Prata";
-            carro.anoFab = 2021;
-            carro.vlrFipe = 70000;
-            carro.velMax = 180;
+            carro.setModelo("HB20");
+            carro.setMarca("Hyundai");
+            carro.setCor("Prata");
+            carro.setAnoFab(2021);
+            carro.setVlrFipe(70000);
+            carro.setVelMax(180);
 
             boolean continuar = true;
             while(continuar) {
