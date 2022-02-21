@@ -18,13 +18,13 @@ public class Exercicio04 {
         Scanner scanner = new Scanner(System.in);
 
         // Obtem o total de cadastros.
-        System.out.println("Quantos empregados deseja cadastrar?");
+        System.out.println("Quantos administradores deseja cadastrar?");
         Administrador[] administrador = new Administrador[scanner.nextInt()];
         scanner.nextLine();
 
         for (int i = 0; i < administrador.length; i++){
             administrador[i] = new Administrador();
-            System.out.println("\nInforme os dados do "+(i+1)+"º empregado:");
+            System.out.println("\nInforme os dados do "+(i+1)+"º administrador:");
             System.out.println("Nome:");
             administrador[i].setNome(scanner.nextLine());
             System.out.println("Endereço:");

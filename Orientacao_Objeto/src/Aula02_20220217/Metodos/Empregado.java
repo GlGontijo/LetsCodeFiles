@@ -5,26 +5,15 @@ public class Empregado extends Pessoa {
     protected double salarioBase;
     protected float imposto;
 
-    public int getCodigoSetor() {
-        return codigoSetor;
-    }
-    public void setCodigoSetor(int codigoSetor) {
-        this.codigoSetor = codigoSetor;
-    }
+    public int getCodigoSetor() {return codigoSetor;}
+    public void setCodigoSetor(int codigoSetor) {this.codigoSetor = codigoSetor;}
 
-    public double getSalarioBase() {
-        return salarioBase;
-    }
-    public void setSalarioBase(double salarioBase) {
-        this.salarioBase = salarioBase;
-    }
+    public double getSalarioBase() {return salarioBase;}
+    public void setSalarioBase(double salarioBase) {this.salarioBase = salarioBase;}
 
-    public float getImposto() {
-        return imposto * 100;
-    }
-    public void setImposto(float imposto) {
-        this.imposto = imposto / 100;
-    }
+    //Imposto recebe % e armazena decimal
+    public float getImposto() {return imposto * 100;}
+    public void setImposto(float imposto) {this.imposto = imposto / 100;}
 
     public double calcularSalario(int diasTrab, double descontos){
         float vlrDia = (float)(this.salarioBase / 30);
