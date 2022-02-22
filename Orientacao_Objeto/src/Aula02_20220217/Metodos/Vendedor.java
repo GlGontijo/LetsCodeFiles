@@ -1,5 +1,7 @@
 package Aula02_20220217.Metodos;
 
+import java.util.Objects;
+
 public class Vendedor extends Empregado{
     private double vlrVend;
     private double comissao;
@@ -17,6 +19,16 @@ public class Vendedor extends Empregado{
         double salarioBruto = (vlrDia * diasTrab);
         double vlrComissao = (this.vlrVend * comissao);
         return (salarioBruto - (salarioBruto * this.imposto) - descontos + vlrComissao);
+    }
+
+    @Override
+    public String toString() {
+        return "Vendedor{" +
+                "salarioBase=" + salarioBase +
+                ", imposto=" + imposto +
+                ", vlrVend=" + vlrVend +
+                ", comissao=" + comissao +
+                '}';
     }
 }
 
