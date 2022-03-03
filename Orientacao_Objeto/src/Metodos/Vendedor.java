@@ -1,6 +1,4 @@
-package Aula02_20220217.Metodos;
-
-import java.util.Objects;
+package Metodos;
 
 public class Vendedor extends Empregado{
     private double vlrVend;

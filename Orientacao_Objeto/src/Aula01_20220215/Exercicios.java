@@ -1,5 +1,8 @@
 package Aula01_20220215;
 
+import Metodos.Livro;
+import Metodos.Veiculo;
+
 import java.util.Scanner;
 
 public class Exercicios {

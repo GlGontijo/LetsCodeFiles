@@ -1,4 +1,4 @@
-package Aula01_20220215;
+package Metodos;
 
 public class Veiculo {
     private String modelo;
@@ -9,7 +9,7 @@ public class Veiculo {
     private int velAtual;
     private float vlrFipe;
 
-    Veiculo(){}
+    public Veiculo(){}
 
     public String getModelo() {
         return modelo;
@@ -60,13 +60,13 @@ public class Veiculo {
         this.vlrFipe = vlrFipe;
     }
 
-    void printInfo(){
+    public void printInfo(){
         System.out.println("\nVeiculo: "+getModelo()+
                 "\nMarca: "+this.getMarca()+
                 "\nCor: "+this.getCor());
     }
 
-    void acelerar(int velAumenta){
+    public void acelerar(int velAumenta){
         if ((getVelAtual() + velAumenta) <= getVelMax()){
             this.velAtual += velAumenta;
             System.out.println("Estou acelerando "+getVelAtual()+"km/h");
@@ -75,7 +75,7 @@ public class Veiculo {
         }
     }
 
-    void frear(int velDiminui){
+    public void frear(int velDiminui){
         this.velAtual -= velDiminui;
         System.out.println("Estou freando o veiculo "+getModelo());
         System.out.println("Velocidade atual: "+getVelAtual()+"km/h");

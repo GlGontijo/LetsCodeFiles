@@ -1,4 +1,4 @@
-package Aula02_20220217.Metodos;
+package Metodos;
 
 public class Operario extends Empregado{
     private double vlrProd;

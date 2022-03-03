@@ -1,4 +1,4 @@
-package Aula02_20220217.Metodos;
+package Metodos;
 
 public class Administrador extends Empregado{
     private double ajudaDeCusto;

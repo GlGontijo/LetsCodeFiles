@@ -1,4 +1,4 @@
-package Aula01_20220215;
+package Metodos;
 
 public class Livro {
     private String pessoaLeitor;
@@ -6,9 +6,9 @@ public class Livro {
     private int pagTotal;
     private int pagLida;
 
-    Livro(){}
+    public Livro(){}
 
-    Livro(String pessoaLeitor, String titulo, int pagTotal){
+    public Livro(String pessoaLeitor, String titulo, int pagTotal){
         this.pessoaLeitor = pessoaLeitor;
         this.titulo = titulo;
         this.pagTotal = pagTotal;

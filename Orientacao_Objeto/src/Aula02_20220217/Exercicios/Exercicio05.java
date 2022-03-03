@@ -1,6 +1,6 @@
 package Aula02_20220217.Exercicios;
 
-import Aula02_20220217.Metodos.Operario;
+import Metodos.Operario;
 
 import java.util.Scanner;
 

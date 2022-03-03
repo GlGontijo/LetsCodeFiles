@@ -1,4 +1,4 @@
-package Aula02_20220217.Metodos;
+package Metodos;
 
 public class Pessoa {
     private String nome;
@@ -26,4 +26,12 @@ public class Pessoa {
 
     public String getTelefone() {return telefone;}
     public void setTelefone(String telefone) {this.telefone = telefone;}
+
+    // Exercicios do dia 22-12-2022
+    @Override
+    public String toString() {
+        return "Nome='" + nome + '\'' +
+                ", Endereco='" + endereco + '\'' +
+                ", Telefone='" + telefone + '\'' ;
+    }
 }
