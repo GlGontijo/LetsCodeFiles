@@ -1,0 +1,40 @@
+package br.com.letscode.poo.entity;
+
+public class Pessoa {
+    private String nome;
+    private String endereco;
+    private String telefone;
+
+    public Pessoa() {}
+
+    public Pessoa(String nome, String endereco, String telefone) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
+    }
+
+    public Pessoa(String nome, String endereco) {
+        this.nome = nome;
+        this.endereco = endereco;
+    }
+
+    public String getNome() {return nome;}
+    public void setNome(String nome) {this.nome = nome;}
+
+    public String getEndereco() {return endereco;}
+    public void setEndereco(String endereco) {this.endereco = endereco;}
+
+    public String getTelefone() {return telefone;}
+    public void setTelefone(String telefone) {this.telefone = telefone;}
+
+
+    // Exercicios do dia 22-12-2022
+    // Polimorfismo de Sobreposição: Sobrescrevendo o método toString()
+    // Usado para 'imprimir' os parametros da classe.
+    @Override
+    public String toString() {
+        return "Nome='" + nome + '\'' +
+                ", Endereco='" + endereco + '\'' +
+                ", Telefone='" + telefone + '\'' ;
+    }
+}
