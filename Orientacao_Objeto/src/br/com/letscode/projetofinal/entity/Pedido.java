@@ -53,6 +53,7 @@ public class Pedido implements IDelivery {
         this.valoresPedido.clear();
     }
 
+    @Override
     public double getVlrDeliveryProduto(String tipoProduto) {
         double vlrDelivery = 0d;
         if (tipoProduto.equalsIgnoreCase("Lanche")) {
@@ -66,7 +67,7 @@ public class Pedido implements IDelivery {
     }
 
     @Override
-    public void delivery(String tipoProduto) {
+    public void insereDelivery(String tipoProduto) {
         if (tipoProduto.equalsIgnoreCase("Lanche")) {
             this.vlrDeliveryTotal += VLR_DELIVERY_LANCHE;
             this.vlrTotal += VLR_DELIVERY_LANCHE;

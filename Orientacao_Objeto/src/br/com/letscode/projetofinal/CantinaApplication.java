@@ -27,7 +27,7 @@ public class CantinaApplication {
                         " 1 - Adicionar Itens ao Pedido\n" +
                         " 2 - Lista Pedido Aberto\n" +
                         " 3 - Excluir Itens do Pedido\n" +
-                        " 4 - Fecha Pedido Aberto\n" +
+                        " 4 - Fecha Pedido Aberto (pagar)\n" +
                         " 0 - Cancelar Pedido Aberto (sair)");
                 switch (sc.nextInt()){
                     case 1:
@@ -70,17 +70,21 @@ public class CantinaApplication {
                 int opt = sc.nextInt(); sc.nextLine();
                 String tipoProduto = cardapio.listaCardapio(opt);
                 while (tipoProduto.equalsIgnoreCase("ERRO")) {
-                    System.out.printf("Opção %d inválida. Tente novamente!", opt);
+                    System.out.printf("Opção %d inválida. Tente novamente!\n", opt);
                     cardapio.opcoesCardapio();
                     opt = sc.nextInt(); sc.nextLine();
                     tipoProduto = cardapio.listaCardapio(opt);
                 }
                 System.out.printf("Valor adicional do Delivery: R$ %.2f\n", pedido.getVlrDeliveryProduto(tipoProduto));
                 int idProduto = (sc.nextInt() - 1); sc.nextLine();
-                pedido.insereProduto(tipoProduto, cardapio.getProdutoCardapio(tipoProduto, idProduto),
-                        cardapio.getVlrProdutoCardapio(tipoProduto, idProduto));
-                pedido.delivery(tipoProduto);
-                System.out.printf("Adicionado o produto %s ao pedido.\n",cardapio.getProdutoCardapio(tipoProduto,idProduto));
+                try {
+                    pedido.insereProduto(tipoProduto, cardapio.getProdutoCardapio(tipoProduto, idProduto),
+                            cardapio.getVlrProdutoCardapio(tipoProduto, idProduto));
+                    pedido.insereDelivery(tipoProduto);
+                    System.out.printf("Adicionado o produto %s ao pedido.\n",cardapio.getProdutoCardapio(tipoProduto,idProduto));
+                } catch (IndexOutOfBoundsException exception){
+                    System.out.println("Opção inválida! " + exception.getMessage());
+                }
                 System.out.println("Deseja pedir mais algum item? S/N");
                 if (sc.next().equalsIgnoreCase("N")){
                     hasPedido = true;
