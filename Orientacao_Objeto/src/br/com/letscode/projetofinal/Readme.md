@@ -14,7 +14,7 @@ Em seguida ele gostaria de oferecer a opção de lanche ou comida para seu clien
 | Pizza     | 45,00 |
 | Fogazza   | 20,00 |
 
-| _Comidas_ | _R$_  |
+| _Pratos_  | _R$_  |
 |-----------|-------|
 | Pasta     | 30,00 |
 | Lasanha   | 70,00 |
