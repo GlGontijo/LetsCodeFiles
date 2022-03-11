@@ -1,23 +1,23 @@
-##1.
-Cria uma Classe Calculadora, que realiza as 4 operações aritméticas básicas a partir de dois valores recebidos em console. Faça um controle de exceção caso o usuário tente fazer uma divisão por zero.
+## 1.
+<br>Cria uma Classe Calculadora, que realiza as 4 operações aritméticas básicas a partir de dois valores recebidos em console. Faça um controle de exceção caso o usuário tente fazer uma divisão por zero.
 
 _Dicas:_
 - _Faça a divisão por 0 e veja qual a exceção que é lançada. Trate exclusivamente essa exceção._
 - _Dê nomes significativos a cada objeto, variável e função que estiver criando : )_
 
-##2. 
-Considere um cadastro de um cliente, no qual vamos precisar receber informações digitadas em console referentes ao nome, cpf e a renda mensal da pessoa.
+## 2. 
+<br>Considere um cadastro de um cliente, no qual vamos precisar receber informações digitadas em console referentes ao nome, cpf e a renda mensal da pessoa.
 <br>Assim que o cadastro for realizado, imprima em console a mensagem “Cadastro realizado com sucesso” seguido do nome, cpf e renda informados.
 <br>Trate a exceção de casos nos quais os valores foram digitados incorretamente em console (exemplo: letra informada em campo numérico).
 <br>Após informar que o usuário incluiu um valor inválido, dê uma nova chance para ele fazer o cadastro. Se o usuário errar 3 vezes, finalize o processamento.
 
-##3. 
-Desenvolver programa que peça ao usuário para cadastrar uma senha; na sequência, deve pedir ao usuário que digite duas variáveis numéricas, e irá calcular a divisão da primeira pela segunda.
+## 3. 
+<br>Desenvolver programa que peça ao usuário para cadastrar uma senha; na sequência, deve pedir ao usuário que digite duas variáveis numéricas, e irá calcular a divisão da primeira pela segunda.
 <br>O programa irá pedir ao usuário que digite a sua senha: se estiver correta, ela mostra o resultado da divisão. Senão dá mensagem de erro e encerra o aplicativo.
 <br>Crie uma exceção exclusiva para tratar a entrada incorreta da senha.
 <br>Também faça, em caráter de reforço, o tratamento de divisão por 0 e de erro de input.
 
-##4. 
+## 4. 
 Crie uma classe chamada ContaBancaria, pertencente ao pacote exercicio.excecao.contas com os seguintes atributos:
 ```java
 private double saldo; // Determina o saldo da conta
