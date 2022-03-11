@@ -1,5 +1,5 @@
 ## 1.
-<br>Cria uma Classe Calculadora, que realiza as 4 operações aritméticas básicas a partir de dois valores recebidos em console. Faça um controle de exceção caso o usuário tente fazer uma divisão por zero.
+Cria uma Classe Calculadora, que realiza as 4 operações aritméticas básicas a partir de dois valores recebidos em console. Faça um controle de exceção caso o usuário tente fazer uma divisão por zero.
 
 _Dicas:_
 - _Faça a divisão por 0 e veja qual a exceção que é lançada. Trate exclusivamente essa exceção._
