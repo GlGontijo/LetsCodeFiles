@@ -50,7 +50,11 @@ public class Exercicio01 {
                         case '/':
                             calculadora.historico();
                             System.out.print("/ ");
-                            calculadora.divide(sc.nextFloat());
+                            try {
+                                calculadora.divide(sc.nextFloat());
+                            } catch (Exception e) {
+                                System.out.println(e.getMessage());
+                            }
                             sc.nextLine();
                             break;
                         case 'c':

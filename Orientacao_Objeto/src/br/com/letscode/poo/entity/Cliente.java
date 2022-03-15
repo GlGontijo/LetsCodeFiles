@@ -24,10 +24,9 @@ public class Cliente extends Pessoa {
         return this.cpf.equals(cpf);
     }
 
-    public static boolean isCPF(String cpf){
+    public static boolean isCPF(String cpf) throws Exception{
         if(!cpf.matches("\\d{11}")){
-            System.out.println("CPF " + cpf + " digitado é inválido.");
-            return false;
+            throw new Exception("CPF " + cpf + " digitado é inválido.");
         } else {
             return true;
         }

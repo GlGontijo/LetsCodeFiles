@@ -33,10 +33,9 @@ public class Calculadora {
         operacoes.add(String.valueOf('*'));
         return resultado;
     }
-    public float divide(float valor){
+    public float divide(float valor) throws Exception{
         if (valor == 0f){
-            System.out.println("Divisão por zero não permitida.");
-            System.out.println();
+            throw new ArithmeticException("Divisão por zero não permitida.");
         } else {
             resultado /= valor;
             valores.add(valor);
