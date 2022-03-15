@@ -12,10 +12,10 @@ public class Exercicio03 {
         Scanner scanner = new Scanner(System.in);
         Senhas senha = new Senhas();
         Calculadora calculadora = new Calculadora();
-        boolean continua = true;
+        boolean hasContinua = true;
 
         // Cadastra a senha
-        while (continua) {
+        while (hasContinua) {
             System.out.println("Cadastre uma senha:");
             String senhaNova = scanner.next();
             System.out.println("Confirme a senha:");
@@ -24,7 +24,7 @@ public class Exercicio03 {
             if (senhaNova.equals(senhaConfirma)) {
                 System.out.println("Senha cadastrada com sucesso!");
                 senha.setSenhaSHA2hex(senhaNova);
-                continua = false;
+                hasContinua = false;
                 System.out.println();
             } else {
                 System.out.println("As senhas digitadas não são iguais.\n" +
@@ -32,8 +32,8 @@ public class Exercicio03 {
             }
         }
 
-        continua = true;
-        while (continua){
+        hasContinua = true;
+        while (hasContinua){
             // Teste de senha
             System.out.println("Digite um número:");
             float dividendo = scanner.nextFloat(); scanner.nextLine();
@@ -46,7 +46,7 @@ public class Exercicio03 {
                 if (senha.isSenha(scanner.next())) {
                     System.out.println("Senha validada com sucesso!");
                     System.out.printf("O resultado da divisão é: %.2f",resultado);
-                    continua = false;
+                    hasContinua = false;
                 } else {
                     System.out.println("Senha incorreta! Processo não autorizado.");
                 }
