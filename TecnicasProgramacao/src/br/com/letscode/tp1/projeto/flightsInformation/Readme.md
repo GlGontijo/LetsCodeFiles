@@ -1,23 +1,23 @@
 
-## Projeto final
+# Projeto final
 
-### Flights Information
+## Flights Information
 
-**Arquivo de entrada:**
+### Arquivo de entrada:
 
 origin;destination;airline;departure;arrival;price
 
 _MEL-Austrália;GRU-Brasil;Gol Airlines;21/04/2022 06:00:00 (+01:00);22/04/2022 02:00:00 (+04:00);3758.00 KIN-Jamaica;PEK-China;Lufthansa;10/04/2022 12:00:00 (+10:00);10/04/2022 04:00:00 (-02:00);4842.00_
+<BR><BR>
 
-<BR>
-**Objetivos:** 
+### Objetivos: 
 
 Calcular tempo de vôo em horas de cada vôo. Agrupar vôos por origem/destino e ordená-los por tempo de vôo (crescente), preco (crescente), nome da companhia (crescente) Criar 2 arquivos de saída:
 
-###1º <BR>
+### 1º <BR>
 Contendo toda a relação de vôos mantendo as colunas originais e incluindo uma nova coluna contendo o tempo do vôo (manter ordenação acima)
 <BR>
-###2º <BR>
+### 2º <BR>
 Contendo um resumo de informações:
 - Vôo mais rapido por origem/destino
 - Vôo mais longo por origem/destino
@@ -25,6 +25,7 @@ Contendo um resumo de informações:
 - Tempo médio de vôo origem/destino
 - Preço médio por origem/destino
 <BR><BR>
+
 ### Detalhes:
 
 A Data/Hora estão com o fuso horário, de acordo com o seguinte formato: _dia/mes/ano hora:minuto:segundo (fuso horário)_. 
