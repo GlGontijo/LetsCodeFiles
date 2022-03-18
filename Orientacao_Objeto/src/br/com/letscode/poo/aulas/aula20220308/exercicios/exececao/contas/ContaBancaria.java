@@ -11,7 +11,7 @@ public class ContaBancaria {
     public ContaBancaria(double valorSaldo, double valorLimite){
         this.saldo = valorSaldo;
         this.limite = valorLimite;
-        LIMITE_CONTA = valorLimite;
+        this.LIMITE_CONTA = valorLimite;
     }
 
     // Retorna o saldo da conta.
