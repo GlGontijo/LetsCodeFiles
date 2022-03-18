@@ -9,7 +9,7 @@ public class Main {
 
         // LocalDate
         System.out.println("Localdate.now: "+ LocalDate.now()); // data corrente
-        System.out.println("Localdate.of: "+ LocalDate.of(2022,3,01)); // data especifica
+        System.out.println("Localdate.of: "+ LocalDate.of(2022,3,1)); // data especifica
 
         // LocalTime
         System.out.println("LocalTime.now: "+ LocalTime.now()); // hora corrente
@@ -17,7 +17,7 @@ public class Main {
 
         // LocalDateTime
         System.out.println("LocalDateTime.now: "+ LocalDateTime.now()); // data e hora corrente
-        System.out.println("LocalDateTime.of: "+ LocalDateTime.of(2022,02,11,20,30,15)); // data e hora especifica
+        System.out.println("LocalDateTime.of: "+ LocalDateTime.of(2022,2,11,20,30,15)); // data e hora especifica
 
         // ZonedDateTime
         System.out.println("ZonedDateTime.now: "+ ZonedDateTime.now());
@@ -60,5 +60,5 @@ public class Main {
         System.out.println("Until dias: " + LocalDate.of(2022,3,1).until(LocalDate.now(),ChronoUnit.DAYS));
         System.out.println("Until horas: " + LocalTime.of(20,30,0).until(LocalTime.now(),ChronoUnit.HOURS));
 
-    };
+    }
 }
