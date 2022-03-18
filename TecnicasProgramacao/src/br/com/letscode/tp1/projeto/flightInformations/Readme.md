@@ -39,11 +39,11 @@ A Data/Hora estão com o fuso horário, de acordo com o seguinte formato: _dia/m
 
 **1º arquivo:** origin;destination;airline;departure;arrival;price;time
 
-|origin | destination | airline | departure | arrival | price | time |
-|-------|-------------|---------|-----------|---------|-------|------|
+| origin | destination | airline | departure | arrival | price | time |
+|--------|-------------|---------|-----------|---------|-------|------|
 
 
 **2º arquivo:** origin;destination;shortest_flight(h);longest_fight(h);cheapest_flight;most_expensive_flight;average_time;average_price
 
-|origin|destination|shortest_flight(h)|longest_fight(h)|cheapest_flight|most_expensive_flight|average_time|average_price|
-|------|-----------|------------------|----------------|---------------|---------------------|------------|-------------|
+| origin | destination | shortest_flight(h) | longest_fight(h) | cheapest_flight | most_expensive_flight | average_time | average_price |
+|--------|-------------|--------------------|------------------|-----------------|-----------------------|--------------|---------------|
