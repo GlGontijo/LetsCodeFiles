@@ -6,6 +6,7 @@ import java.time.temporal.ChronoUnit;
 public class Main {
     public static void main(String[] args) {
         /* API java.time */
+
         // LocalDate
         System.out.println("Localdate.now: "+ LocalDate.now()); // data corrente
         System.out.println("Localdate.of: "+ LocalDate.of(2022,3,01)); // data especifica
@@ -27,6 +28,7 @@ public class Main {
         System.out.println("OffsetDateTime.of: "+ OffsetDateTime.of(2022,3,1,22,22,22,0, ZoneOffset.of("-3")));
 
         /* Conversões */
+
         // LocalDateTime
         System.out.println("LocalDateTime to LocalDate: " + LocalDateTime.now().toLocalDate());
         System.out.println("LocalDateTime to LocalTime: " + LocalDateTime.now().toLocalTime());
