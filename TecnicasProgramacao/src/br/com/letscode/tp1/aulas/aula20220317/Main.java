@@ -1,6 +1,7 @@
 package br.com.letscode.tp1.aulas.aula20220317;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class Main {
@@ -22,6 +23,9 @@ public class Main {
         // ZonedDateTime
         System.out.println("ZonedDateTime.now: "+ ZonedDateTime.now());
         System.out.println("ZonedDateTime.of: "+ ZonedDateTime.of(2022,3,1,22,22,22,0, ZoneId.of("America/Sao_Paulo")));
+
+        // Instant
+        System.out.println("Instant.now: "+ Instant.now());
 
         // OffsetDateTime
         System.out.println("OffsetDateTime.now: "+ OffsetDateTime.now());
@@ -59,6 +63,15 @@ public class Main {
         // Until (diferença entre medidas de tempo)
         System.out.println("Until dias: " + LocalDate.of(2022,3,1).until(LocalDate.now(),ChronoUnit.DAYS));
         System.out.println("Until horas: " + LocalTime.of(20,30,0).until(LocalTime.now(),ChronoUnit.HOURS));
+
+        // Formatter
+        System.out.println(OffsetDateTime
+                .of(2022, 3, 17, 19, 0, 0, 0, ZoneOffset.of("-3"))
+                .format(DateTimeFormatter
+                .ofPattern("HH:mm:ss', 'dd 'de 'LLLL 'de 'yyyy '(fuso: 'xxx')'")));
+        System.out.println(OffsetDateTime
+                .parse("2007-12-03T10:15:30+01:00")
+                .of(2022, 3, 17, 19, 0, 0, 0, ZoneOffset.of("-3")));
 
     }
 }
