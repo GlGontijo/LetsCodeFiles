@@ -2,17 +2,18 @@ package br.com.letscode.tp1.aulas.aula20220322;
 
 import br.com.letscode.tp1.aulas.aula20220322.entities.Quadrado;
 import br.com.letscode.tp1.aulas.aula20220322.entities.Triangulo;
-import br.com.letscode.tp1.aulas.aula20220322.interfaces.FormaGeometrica;
+import br.com.letscode.tp1.aulas.aula20220322.interfaces.IFormaGeometrica;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-        List<FormaGeometrica> formaGeometricaList = List.of(
+        List<IFormaGeometrica> formaGeometricaList = List.of(
                 new Quadrado(2),
                 new Triangulo(2, 3),
-                new FormaGeometrica() {  // Classe anonima
+                new IFormaGeometrica() {  // Classe anonima
                     @Override
                     public long calculaArea() {
                         return 100;
@@ -21,8 +22,9 @@ public class Main {
                 () -> 0 // expressao lambda -> Mesma utilização da classe anonima
         );
 
-        for (FormaGeometrica forma : formaGeometricaList) {
+        for (IFormaGeometrica forma : formaGeometricaList) {
             forma.print();
         }
+
     }
 }

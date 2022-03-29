@@ -1,8 +1,8 @@
 package br.com.letscode.tp1.aulas.aula20220322.entities;
 
-import br.com.letscode.tp1.aulas.aula20220322.interfaces.FormaGeometrica;
+import br.com.letscode.tp1.aulas.aula20220322.interfaces.IFormaGeometrica;
 
-public class Triangulo implements FormaGeometrica {
+public class Triangulo implements IFormaGeometrica {
     private long base;
     private long altura;
 
