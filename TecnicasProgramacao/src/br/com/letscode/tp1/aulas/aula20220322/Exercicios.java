@@ -32,7 +32,6 @@ public class Exercicios {
         System.out.println(integerNumbers);
         System.out.println();
 
-
         System.out.println("\nMétodo 1 - Usando laços de comparação (for/if):");
         initialTime = LocalTime.now();
 
@@ -187,3 +186,5 @@ public class Exercicios {
         System.out.println(filteredNumbers);
     }
 }
+
+// Teste de performance Framework / Benchmark JNH
