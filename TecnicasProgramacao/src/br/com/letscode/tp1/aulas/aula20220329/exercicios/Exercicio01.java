@@ -30,7 +30,7 @@ public class Exercicio01 {
         System.out.println("Valores positivos: \n" +
                 numeros.stream()
                         .filter(n -> n >= 0)
-                        .collect(Collectors.groupingBy(n -> n % 2 == 0))
+                        .collect(Collectors.groupingBy(n -> (n % 2 == 0)?"Par":"Impar"))
                 );
     }
 }
