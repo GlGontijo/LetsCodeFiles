@@ -6,13 +6,12 @@ import java.util.List;
 public class Pedido {
     private String vendedor;
     private String comprador;
-    List<ItensVendidos> itensVendidosList = new ArrayList<>();
+    private List<ItensVendidos> itensVendidosList = new ArrayList<>();
 
-    public Pedido(String comprador, String vendedor, int codItem, double qtdItem, double valorItem) {
+    public Pedido(String comprador, String vendedor, List<ItensVendidos> itensVendidosList) {
         this.comprador = comprador;
         this.vendedor = vendedor;
-        ItensVendidos itemVendido = new ItensVendidos(codItem, qtdItem, valorItem);
-        this.itensVendidosList.add(itemVendido);
+        this.itensVendidosList.addAll(itensVendidosList);
     }
 
     public String getComprador() {return comprador;}
@@ -21,8 +20,18 @@ public class Pedido {
     public String getVendedor() {return vendedor;}
 
     public List<ItensVendidos> getItensVendidosList() {return itensVendidosList;}
-    public void setItensVendidosList(int codItem, double qtdItem, double valorItem) {
-        this.itensVendidosList.add(new ItensVendidos(codItem, qtdItem, valorItem));
+    public void setItensVendidosList(List<ItensVendidos> itensVendidosList) {
+        this.itensVendidosList.addAll(itensVendidosList);
+    }
+
+    public double getValTotalItens() {
+        return itensVendidosList.stream()
+                .mapToDouble(ItensVendidos::getValorItem).sum();
+    }
+
+    public double getQtdTotalItens() {
+        return itensVendidosList.stream()
+                .mapToDouble(ItensVendidos::getQtdItem).sum();
     }
 
     @Override
