@@ -18,6 +18,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class GerenciadorDeArquivoJavaIO implements IGerenciadorDeArquivo {
 
@@ -40,7 +41,7 @@ public class GerenciadorDeArquivoJavaIO implements IGerenciadorDeArquivo {
             // sucesso
         } else {
 //            System.out.printf("Falhou");
-            for (File arquivoFilho : diretorio.listFiles()) {
+            for (File arquivoFilho : Objects.requireNonNull(diretorio.listFiles())) {
                 arquivoFilho.delete();
             }
 

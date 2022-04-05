@@ -1,0 +1,50 @@
+
+-- SCRIPT PARA INSERIR PAGTO EM DINHEIRO NO VALOR DA DIFERENCA DO CUPOM
+
+INSERT INTO tab_pagamento_cupom (
+  seq_cupom,
+  seq_pagamento,
+  cod_forma_pagto,
+  val_pagamento,
+  val_cheque,
+  num_parcelas )
+SELECT
+  x.seq_cupom, -- seq_cupom e a mesma
+  CAST(COALESCE(MAX(tpc.seq_pagamento),0) +1 AS INTEGER), -- proxima seq_pagamento
+  COALESCE((SELECT MIN(tfp.cod_forma_pagto) FROM tab_forma_pagto tfp
+    WHERE tfp.ind_tipo = 'DI'
+    AND tfp.cod_cliente IS NULL),1), -- busca forma de pagto Dinheiro
+  CAST((SELECT DISTINCT tcf.val_total_cupom FROM tab_cupom_fiscal tcf
+    WHERE tcf.seq_cupom = x.seq_cupom)
+    - COALESCE(SUM(tpc.val_pagamento),0) AS NUMERIC(15,2)), -- valor total do cupom menos o valor total dos pagamentos
+  '0.00', -- val_cheque obrigatorio
+  1 -- num_parcelas obrigatorio
+FROM tab_cupom_fiscal x
+LEFT JOIN tab_pagamento_cupom tpc ON (x.seq_cupom = tpc.seq_cupom)
+WHERE x.seq_cupom = :SeqCupom -- seq_cupom igual ao campo VENDA no gerenciador no TAC
+GROUP by 1,3;
+
+-- SCRIPT PARA INSERIR PAGTO EM DINHEIRO NO VALOR DA DIFERENCA DO CUPOM
+
+INSERT INTO tab_pagamento_cupom (
+  seq_cupom,
+  seq_pagamento,
+  cod_forma_pagto,
+  val_pagamento,
+  val_cheque,
+  num_parcelas )
+SELECT
+  x.seq_cupom, -- seq_cupom e a mesma
+  CAST(COALESCE(MAX(tpc.seq_pagamento),0) +1 AS INTEGER), -- proxima seq_pagamento
+  COALESCE((SELECT MIN(tfp.cod_forma_pagto) FROM tab_forma_pagto tfp
+    WHERE tfp.ind_tipo = 'DI'
+    AND tfp.cod_cliente IS NULL),1), -- busca forma de pagto Dinheiro
+  CAST((SELECT DISTINCT tcf.val_total_cupom FROM tab_cupom_fiscal tcf
+    WHERE tcf.seq_cupom = x.seq_cupom)
+    - COALESCE(SUM(tpc.val_pagamento),0) AS NUMERIC(15,2)), -- valor total do cupom menos o valor total dos pagamentos
+  '0.00', -- val_cheque obrigatorio
+  1 -- num_parcelas obrigatorio
+FROM tab_cupom_fiscal x
+LEFT JOIN tab_pagamento_cupom tpc ON (x.seq_cupom = tpc.seq_cupom)
+WHERE x.seq_cupom = :SeqCupom -- seq_cupom igual ao campo VENDA no gerenciador no TAC
+GROUP by 1,3;
