@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Aula01-BoraSerTech/Aula01-BoraSerTech.iml" filepath="$PROJECT_DIR$/Aula01-BoraSerTech/Aula01-BoraSerTech.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AulaMatrizes/AulaMatrizes.iml" filepath="$PROJECT_DIR$/AulaMatrizes/AulaMatrizes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/IdeaProjects.iml" filepath="$PROJECT_DIR$/.idea/IdeaProjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lista_20-01-2022/Lista_20-01-2022.iml" filepath="$PROJECT_DIR$/Lista_20-01-2022/Lista_20-01-2022.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lista_20220127/Lista_20220127.iml" filepath="$PROJECT_DIR$/Lista_20220127/Lista_20220127.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Orientacao_Objeto/Orientacao_Objeto.iml" filepath="$PROJECT_DIR$/Orientacao_Objeto/Orientacao_Objeto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TecnicasProgramacao/TecnicasProgramacao.iml" filepath="$PROJECT_DIR$/TecnicasProgramacao/TecnicasProgramacao.iml" />
+    </modules>
+  </component>
+</project>

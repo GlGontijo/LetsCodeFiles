@@ -12,8 +12,8 @@ public class FlightsInformationApp {
     static IFilesManager filesManager = new FilesManagerJavaNio2();
 
     public static void main(String[] args) {
-        String dirIN = "./files/in";
-        String dirOUT = "./files/out";
+        String dirIN = "files/in";
+        String dirOUT = "files/out";
         String fileCSVPathIN = dirIN + "/flights.csv";
         String fligthsWithDurationPath = dirOUT + "/fligthsWithDuration.csv";
 
