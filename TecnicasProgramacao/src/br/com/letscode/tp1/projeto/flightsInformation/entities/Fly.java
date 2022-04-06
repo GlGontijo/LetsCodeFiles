@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 public class Fly {
     private String origin;
@@ -22,6 +23,16 @@ public class Fly {
         this.arrival = ZonedDateTime.parse(arrival,DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss '('zzz')'"));
         this.price = new BigDecimal(price);
         this.duration = this.departure.until(this.arrival, ChronoUnit.HOURS);
+    }
+
+    public static String getLineCSV(Fly fligthsInformation) {
+        return fligthsInformation.getOrigin() + ";" +
+                fligthsInformation.getDestination() + ";" +
+                fligthsInformation.getAirline() + ";" +
+                fligthsInformation.getDeparture() + ";" +
+                fligthsInformation.getArrival() + ";" +
+                fligthsInformation.getPrice() + ";" +
+                fligthsInformation.getDuration();
     }
 
     public String getOrigin() {return origin;}

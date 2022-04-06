@@ -1,6 +1,6 @@
 package br.com.letscode.tp1.projeto.flightsInformation;
 
-import br.com.letscode.tp1.projeto.flightsInformation.entities.FilesManagerJavaIO;
+import br.com.letscode.tp1.projeto.flightsInformation.entities.FilesManagerJavaNio2;
 import br.com.letscode.tp1.projeto.flightsInformation.entities.Fly;
 import br.com.letscode.tp1.projeto.flightsInformation.interfaces.IFilesManager;
 
@@ -9,10 +9,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class FlightsInformationApp {
-    static IFilesManager filesManager = new FilesManagerJavaIO();
+    static IFilesManager filesManager = new FilesManagerJavaNio2();
 
     public static void main(String[] args) {
-        List<String[]> fligthsInformation = new LinkedList<>();
         String dirIN = "./files/in";
         String dirOUT = "./files/out";
         String fileCSVPathIN = dirIN + "/flights.csv";
@@ -26,23 +25,16 @@ public class FlightsInformationApp {
             filesManager.mkDir(dirOUT);
         }
 
+        List<Fly> fligthsInformation = new ArrayList<>();
         for (String[] flightLine : readFlyFile(fileCSVPathIN)) {
-            Fly line = new Fly(
-                    flightLine[0],
-                    flightLine[1],
-                    flightLine[2],
-                    flightLine[3],
-                    flightLine[4],
-                    flightLine[5]);
-
-            fligthsInformation.add(new String[]{
-                    line.getOrigin(),
-                    line.getDestination(),
-                    line.getAirline(),
-                    String.valueOf(line.getDeparture()),
-                    String.valueOf(line.getArrival()),
-                    String.valueOf(line.getPrice()),
-                    String.valueOf(line.getDuration())});
+            fligthsInformation.add(new Fly(
+                    flightLine[0], // origin
+                    flightLine[1], // destination
+                    flightLine[2], // airline
+                    flightLine[3], // departure
+                    flightLine[4], // arrival
+                    flightLine[5]) // price
+            );
         }
 
         // Gera o arquivo "flights.csv" acrescido da coluna "duration"
@@ -59,9 +51,10 @@ public class FlightsInformationApp {
             // Converte '\' para '/'
             fileLines = filesManager.readLines(scanner.next().replace('\\', '/'));
             filesManager.writeLines(fileCSVPathIN,fileLines,false);
+        } else {
+            // leitura do arquivo
+            fileLines = filesManager.readLines(fileCSVPathIN);
         }
-        // leitura do arquivo
-        fileLines = filesManager.readLines(fileCSVPathIN);
 
         return fileLines.stream()
                 .skip(1)
@@ -69,12 +62,12 @@ public class FlightsInformationApp {
                 .collect(Collectors.toList());
     }
 
-    public static void writeFligthsWhithDuration(List<String[]> fligthsInformation, String fligthsWithDurationPath){
+    public static void writeFligthsWhithDuration(List<Fly> fligthsInformation, String fligthsWithDurationPath){
         List<String> flightsInformationList = new ArrayList<>();
         // Cabeçalho do CSV
         flightsInformationList.add("origin;destination;airline;departure;arrival;price;duration");
-        for (String[] strings : new ArrayList<>(fligthsInformation)) {
-            flightsInformationList.add(String.join(";", strings));
+        for (Fly fly : fligthsInformation) {
+            flightsInformationList.add(Fly.getLineCSV(fly));
         }
 
         filesManager.writeLines(fligthsWithDurationPath,flightsInformationList,false);

@@ -6,7 +6,7 @@
         <entry key="\files\in\flights.csv">
           <value>
             <Attribute>
-              <option name="separator" value=":" />
+              <option name="separator" value=";" />
             </Attribute>
           </value>
         </entry>

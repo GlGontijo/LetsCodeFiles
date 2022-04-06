@@ -5,6 +5,7 @@ import br.com.letscode.tp1.java_io.interfaces.IGerenciadorDeArquivo;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class GerenciadorDeArquivoJavaNio2 implements IGerenciadorDeArquivo {
@@ -50,7 +51,7 @@ public class GerenciadorDeArquivoJavaNio2 implements IGerenciadorDeArquivo {
 
     @Override
     public List<String> leLinhas(String caminhoArquivo) {
-        Path arquivo = Path.of(caminhoArquivo);
+        Path arquivo = Paths.get(caminhoArquivo);
         try {
             return Files.readAllLines(arquivo);
         } catch (IOException ioException) {
