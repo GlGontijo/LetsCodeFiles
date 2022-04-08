@@ -25,16 +25,6 @@ public class Fly {
         this.duration = this.departure.until(this.arrival, ChronoUnit.HOURS);
     }
 
-    public static String getLineCSV(Fly fligthsInformation) {
-        return fligthsInformation.getOrigin() + ";" +
-                fligthsInformation.getDestination() + ";" +
-                fligthsInformation.getAirline() + ";" +
-                fligthsInformation.getDeparture() + ";" +
-                fligthsInformation.getArrival() + ";" +
-                fligthsInformation.getPrice() + ";" +
-                fligthsInformation.getDuration();
-    }
-
     public String getOrigin() {return origin;}
     public String getDestination() {return destination;}
     public String getAirline() {return airline;}
@@ -50,6 +40,17 @@ public class Fly {
     public void setArrival(ZonedDateTime arrival) {this.arrival = arrival;}
     public void setPrice(BigDecimal price) {this.price = price;}
     public void setDuration(Long duration) {this.duration = duration;}
+
+    // Métodos específicos
+    public static String getLineCSV(Fly fligthsInformation) {
+        return fligthsInformation.getOrigin() + ";" +
+                fligthsInformation.getDestination() + ";" +
+                fligthsInformation.getAirline() + ";" +
+                fligthsInformation.getDeparture() + ";" +
+                fligthsInformation.getArrival() + ";" +
+                fligthsInformation.getPrice() + ";" +
+                fligthsInformation.getDuration();
+    }
 
     @Override
     public String toString() {

@@ -5,8 +5,11 @@ import br.com.letscode.tp1.projeto.flightsInformation.entities.Fly;
 import br.com.letscode.tp1.projeto.flightsInformation.interfaces.IFilesManager;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static br.com.letscode.tp1.projeto.flightsInformation.entities.Fly.getLineCSV;
 
 public class FlightsInformationApp {
     static IFilesManager filesManager = new FilesManagerJavaNio2();
@@ -15,7 +18,8 @@ public class FlightsInformationApp {
         String dirIN = "files/in";
         String dirOUT = "files/out";
         String fileCSVPathIN = dirIN + "/flights.csv";
-        String fligthsWithDurationPath = dirOUT + "/fligthsWithDuration.csv";
+        String flightsWithDurationPath = dirOUT + "/flightsWithDuration.csv";
+        String filteredFlightsPath = dirOUT + "/filteredFlights.csv";
 
         // Cria os diretórios, caso não existam
         if (!new File(dirIN).isDirectory()){
@@ -25,9 +29,9 @@ public class FlightsInformationApp {
             filesManager.mkDir(dirOUT);
         }
 
-        List<Fly> fligthsInformation = new ArrayList<>();
+        List<Fly> flightsInformation = new ArrayList<>();
         for (String[] flightLine : readFlyFile(fileCSVPathIN)) {
-            fligthsInformation.add(new Fly(
+            flightsInformation.add(new Fly(
                     flightLine[0], // origin
                     flightLine[1], // destination
                     flightLine[2], // airline
@@ -38,7 +42,10 @@ public class FlightsInformationApp {
         }
 
         // Gera o arquivo "flights.csv" acrescido da coluna "duration"
-        writeFligthsWhithDuration(fligthsInformation, fligthsWithDurationPath);
+        writeFlightsWhithDuration(flightsInformation, flightsWithDurationPath);
+
+        // Gera o arquivo filteredFlights
+        writeFilteredFlights(flightsInformation,filteredFlightsPath);
     }
 
     public static List<String[]> readFlyFile(String fileCSVPathIN){
@@ -62,14 +69,77 @@ public class FlightsInformationApp {
                 .collect(Collectors.toList());
     }
 
-    public static void writeFligthsWhithDuration(List<Fly> fligthsInformation, String fligthsWithDurationPath){
+    public static void writeFlightsWhithDuration(List<Fly> flightsInformation, String flightsWithDurationPath){
         List<String> flightsInformationList = new ArrayList<>();
         // Cabeçalho do CSV
         flightsInformationList.add("origin;destination;airline;departure;arrival;price;duration");
-        for (Fly fly : fligthsInformation) {
-            flightsInformationList.add(Fly.getLineCSV(fly));
+        for (Fly fly : flightsInformation.stream()
+                // ordenando
+                .sorted(Comparator.comparing(Fly::getOrigin)
+                        .thenComparing(Fly::getDestination)
+                        .thenComparing(Fly::getDuration)
+                        .thenComparing(Fly::getPrice)
+                        .thenComparing(Fly::getAirline))
+                .collect(Collectors.toList())){
+            flightsInformationList.add(getLineCSV(fly));
         }
 
-        filesManager.writeLines(fligthsWithDurationPath,flightsInformationList,false);
+        filesManager.writeLines(flightsWithDurationPath,flightsInformationList,false);
+    }
+
+    public static void writeFilteredFlights(List<Fly> flightsInformation, String filteredFlightsPath){
+        Set<String> filteredFlightsSet = new LinkedHashSet<>();
+        // Cabeçalho do CSV
+        filteredFlightsSet.add("origin;destination;shortest_flight(h);longest_fight(h);cheapest_flight;" +
+                "most_expensive_flight;average_time;average_price");
+        for (Fly fly : flightsInformation.stream()
+                .sorted(Comparator.comparing(Fly::getOrigin)
+                        .thenComparing(Fly::getDestination))
+                .collect(Collectors.toList())){
+            filteredFlightsSet.add(
+                    fly.getOrigin() + ";" + fly.getDestination() + ";"
+                            // shortest_flight
+                            + flightsInformation.parallelStream()
+                            .filter(o -> o.getOrigin().equals(fly.getOrigin()))
+                            .filter(d -> d.getDestination().equals(fly.getDestination()))
+                            .map(Fly::getDuration)
+                            .min(Comparator.naturalOrder()).get() + ";"
+                            // longest_fight
+                            + flightsInformation.parallelStream()
+                            .filter(o -> o.getOrigin().equals(fly.getOrigin()))
+                            .filter(d -> d.getDestination().equals(fly.getDestination()))
+                            .map(Fly::getDuration)
+                            .max(Comparator.naturalOrder()).get() + ";"
+                            // cheapest_flight
+                            + flightsInformation.parallelStream()
+                            .filter(o -> o.getOrigin().equals(fly.getOrigin()))
+                            .filter(d -> d.getDestination().equals(fly.getDestination()))
+                            .map(Fly::getPrice)
+                            .min(Comparator.naturalOrder()).get() + ";"
+                            // most_expensive_flight
+                            + flightsInformation.parallelStream()
+                            .filter(o -> o.getOrigin().equals(fly.getOrigin()))
+                            .filter(d -> d.getDestination().equals(fly.getDestination()))
+                            .map(Fly::getPrice)
+                            .max(Comparator.naturalOrder()).get() + ";"
+                            // average_time
+                            + flightsInformation.parallelStream()
+                            .filter(o -> o.getOrigin().equals(fly.getOrigin()))
+                            .filter(d -> d.getDestination().equals(fly.getDestination()))
+                            .map(Fly::getDuration)
+                            .collect(Collectors.averagingLong(Long::longValue)) + ";"
+                            // average_price
+                            + flightsInformation.parallelStream()
+                            .filter(o -> o.getOrigin().equals(fly.getOrigin()))
+                            .filter(d -> d.getDestination().equals(fly.getDestination()))
+                            .map(Fly::getPrice)
+                            .collect(Collectors.averagingLong(BigDecimal::longValue))
+            );
+        }
+
+        filesManager.writeLines(
+                filteredFlightsPath,
+                filteredFlightsSet.stream().collect(Collectors.toList()),
+                false);
     }
 }
