@@ -33,24 +33,24 @@ public class Fly {
     public BigDecimal getPrice() {return price;}
     public Long getDuration() {return duration;}
 
-    public void setOrigin(String origin) {this.origin = origin;}
-    public void setDestination(String destination) {this.destination = destination;}
-    public void setAirline(String airline) {this.airline = airline;}
-    public void setDeparture(ZonedDateTime departure) {this.departure = departure;}
-    public void setArrival(ZonedDateTime arrival) {this.arrival = arrival;}
-    public void setPrice(BigDecimal price) {this.price = price;}
-    public void setDuration(Long duration) {this.duration = duration;}
-
-    // Métodos específicos
-    public static String getLineCSV(Fly fligthsInformation) {
-        return fligthsInformation.getOrigin() + ";" +
-                fligthsInformation.getDestination() + ";" +
-                fligthsInformation.getAirline() + ";" +
-                fligthsInformation.getDeparture() + ";" +
-                fligthsInformation.getArrival() + ";" +
-                fligthsInformation.getPrice() + ";" +
-                fligthsInformation.getDuration();
+    // Método específico
+    public String getLineCSV() {
+        return this.origin + ";" +
+                this.destination + ";" +
+                this.airline + ";" +
+                this.departure + ";" +
+                this.arrival + ";" +
+                this.price + ";" +
+                this.duration;
     }
+
+//    public void setOrigin(String origin) {this.origin = origin;}
+//    public void setDestination(String destination) {this.destination = destination;}
+//    public void setAirline(String airline) {this.airline = airline;}
+//    public void setDeparture(ZonedDateTime departure) {this.departure = departure;}
+//    public void setArrival(ZonedDateTime arrival) {this.arrival = arrival;}
+//    public void setPrice(BigDecimal price) {this.price = price;}
+//    public void setDuration(Long duration) {this.duration = duration;}
 
     @Override
     public String toString() {

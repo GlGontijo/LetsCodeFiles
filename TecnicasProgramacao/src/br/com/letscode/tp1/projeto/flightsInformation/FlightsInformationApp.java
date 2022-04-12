@@ -9,8 +9,6 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static br.com.letscode.tp1.projeto.flightsInformation.entities.Fly.getLineCSV;
-
 public class FlightsInformationApp {
     static IFilesManager filesManager = new FilesManagerJavaNio2();
 
@@ -81,7 +79,7 @@ public class FlightsInformationApp {
                         .thenComparing(Fly::getPrice)
                         .thenComparing(Fly::getAirline))
                 .collect(Collectors.toList())){
-            flightsInformationList.add(getLineCSV(fly));
+            flightsInformationList.add(fly.getLineCSV());
         }
 
         filesManager.writeLines(flightsWithDurationPath,flightsInformationList,false);
@@ -96,42 +94,40 @@ public class FlightsInformationApp {
                 .sorted(Comparator.comparing(Fly::getOrigin)
                         .thenComparing(Fly::getDestination))
                 .collect(Collectors.toList())){
+            List<Fly> flyList = flightsInformation.parallelStream()
+                    .filter(o -> o.getOrigin().equals(fly.getOrigin()))
+                    .filter(d -> d.getDestination().equals(fly.getDestination()))
+                    .collect(Collectors.toList());
             filteredFlightsSet.add(
                     fly.getOrigin() + ";" + fly.getDestination() + ";"
                             // shortest_flight
-                            + flightsInformation.parallelStream()
-                            .filter(o -> o.getOrigin().equals(fly.getOrigin()))
-                            .filter(d -> d.getDestination().equals(fly.getDestination()))
+                            + flyList
+                            .stream()
                             .map(Fly::getDuration)
                             .min(Comparator.naturalOrder()).get() + ";"
                             // longest_fight
-                            + flightsInformation.parallelStream()
-                            .filter(o -> o.getOrigin().equals(fly.getOrigin()))
-                            .filter(d -> d.getDestination().equals(fly.getDestination()))
+                            + flyList
+                            .stream()
                             .map(Fly::getDuration)
                             .max(Comparator.naturalOrder()).get() + ";"
                             // cheapest_flight
-                            + flightsInformation.parallelStream()
-                            .filter(o -> o.getOrigin().equals(fly.getOrigin()))
-                            .filter(d -> d.getDestination().equals(fly.getDestination()))
+                            + flyList
+                            .stream()
                             .map(Fly::getPrice)
                             .min(Comparator.naturalOrder()).get() + ";"
                             // most_expensive_flight
-                            + flightsInformation.parallelStream()
-                            .filter(o -> o.getOrigin().equals(fly.getOrigin()))
-                            .filter(d -> d.getDestination().equals(fly.getDestination()))
+                            + flyList
+                            .stream()
                             .map(Fly::getPrice)
                             .max(Comparator.naturalOrder()).get() + ";"
                             // average_time
-                            + flightsInformation.parallelStream()
-                            .filter(o -> o.getOrigin().equals(fly.getOrigin()))
-                            .filter(d -> d.getDestination().equals(fly.getDestination()))
+                            + flyList
+                            .stream()
                             .map(Fly::getDuration)
                             .collect(Collectors.averagingLong(Long::longValue)) + ";"
                             // average_price
-                            + flightsInformation.parallelStream()
-                            .filter(o -> o.getOrigin().equals(fly.getOrigin()))
-                            .filter(d -> d.getDestination().equals(fly.getDestination()))
+                            + flyList
+                            .stream()
                             .map(Fly::getPrice)
                             .collect(Collectors.averagingLong(BigDecimal::longValue))
             );
