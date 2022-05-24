@@ -1,4 +1,3 @@
-
 package com.letscode.usuarios.springmysql;
 
 import com.letscode.usuarios.springmysql.resource.UserResource;
